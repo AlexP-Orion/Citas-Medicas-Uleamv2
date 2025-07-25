@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('formLogin');
+  const form = document.getElementById('loginForm'); // <- usa el id correcto
+
   if (!form) {
-    console.error('No se encontró el formulario con id "formLogin".');
+    console.error('No se encontró el formulario con id "loginForm".');
     return;
   }
 
