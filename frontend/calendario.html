@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mis Citas</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+<body>
+  <div id="mensajeCita" class="mensaje-toast hidden"></div>
+  <div id="indicadoresAtajos">
+    <div class="indicador-atajos hidden" id="msgAtajos">
+      Presione <strong>Alt</strong>+ <strong>A</strong> para usar atajos rápidos con letras.
+    </div>
+    <div class="indicador-atajos hidden" id="msgSalir">
+      Presione <strong>Esc</strong> para salir del modo de atajos.
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <strong id="Sistema">Sistema de Citas</strong>
+    </div>
+    <div class="navbar-right">
+      <div class="navbar-item">
+        <button onclick="window.location.href='index.html'" data-key="A" tabindex="1">📝 Agendar Cita</button>
+      </div>
+      <div class="navbar-item">
+        <button id="btnCerrarSesion" data-key="X" tabindex="2">Cerrar Sesión</button>
+      </div>
+      <div class="navbar-item navbar-accessibility">
+        <button id="btnAccesibilidad" data-key="W" tabindex="3">☰ Accesibilidad</button>
+        <div id="menuAccesibilidad" class="dropdown hidden">
+          <div class="titulo-seccion">Visual</div>
+          <button id="btnLetraGrande" onclick="activarLetraGrande()" data-key="E">Letra Grande</button>
+          <button id="btnModoOscuro" onclick="activarModoOscuro()" data-key="R">Modo Oscuro</button>
+          <button id="btnContraste" onclick="activarContraste()" data-key="T">Alto Contraste</button>
+          <button id="btnTeclado" onclick="activarEnfoqueVisible()" data-key="Y">Énfasis tabulador</button>
+
+          <hr class="separador-accesibilidad">
+          <div class="titulo-seccion">Cognitiva</div>
+          <button id="btnFuenteClara" onclick="activarFuenteLegible()" data-key="U">Fuente Legible</button>
+          <button id="btnLectura" onclick="toggleLectura()" data-key="L">Lectura automática</button>
+          <button id="btnConsejos" onclick="toggleConsejos()" data-key="C">Ayuda contextual</button>
+
+          <hr class="separador-accesibilidad">
+          <div class="titulo-seccion">Visual avanzada</div>
+          
+          <button id="btnAnimaciones" onclick="toggleAnimaciones()" data-key="P">Pausar animaciones</button>
+          <button id="btnEspaciado" onclick="alternarEspaciado()" data-key="Q">Espaciado amplio</button>
+          <button id="btnResaltado" onclick="activarResaltado()" data-key="R">Resaltar enlaces</button>
+          <button id="btnMonocromatico" onclick="activarMonocromatico()" data-key="S">Modo monocromático</button>
+
+          <hr class="separador-accesibilidad">
+          <button id="btnRestablecerAccesibilidad" onclick="restablecerAccesibilidad()" data-key="Z">Restablecer accesibilidad</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+    <div class="container">
+      <h1>Calendario de Citas
+        <span class="icono-ayuda" data-ayuda="Haga clic en un día resaltado con un recuadro azul para ver las citas agendadas.">ⓘ</span>
+      </h1>
+      <div id="calendar" aria-label="Calendario de Citas"></div>
+    </div>
+  </div>
+
+  <!-- Modal para ver citas del día -->
+  <div id="modalCitas" class="modal" style="display: none;">
+    <div class="modal-contenido">
+      <button class="cerrar-modal" aria-label="Cerrar ventana de citas" onclick="cerrarModal()">✖ Cerrar</button>
+      <h3>Citas para el <span id="modalFecha"></span></h3>
+      <div id="listaCitas" style="padding: 0%;"></div>
+    </div>
+  </div>
+
+  <!-- Modal para editar una cita -->
+  <div id="modalEditar" class="modal" style="display: none;">
+    <div class="modal-contenido">
+      <h3>Editar Cita</h3>
+      <form id="formEditarCita">
+        <label for="editarFecha">Nueva Fecha:
+          <span class="icono-ayuda" data-ayuda="Seleccione otra fecha disponible.">ⓘ</span>
+        </label>
+        <input type="date" id="editarFecha" required aria-label="Nueva Fecha para la cita">
+
+        <label for="editarHora">Nueva Hora:
+          <span class="icono-ayuda" data-ayuda="Seleccione una hora nueva para su cita.">ⓘ</span>
+        </label>
+        <select id="editarHora" required aria-label="Nueva hora para la cita">
+          <option value="">-- Seleccione una hora --</option>
+        </select>
+
+        <div style="margin-top: 12px; display: flex; justify-content: space-between;">
+          <button type="submit" class="btn-editar" aria-label="Guardar Cambios">Guardar Cambios</button>
+          <button type="button" class="btn-cancelar-editar" onclick="cerrarModalEditar()" aria-label="Cancelar edición">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="calendario.js"></script>
+  <script src="accesibilidad.js"></script>
+  <script>
+    if (typeof window.inicializarAccesibilidad === 'function') {
+      window.inicializarAccesibilidad();
+    }
+  </script>
+</body>
+</html>

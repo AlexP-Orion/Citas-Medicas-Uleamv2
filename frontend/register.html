@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Indicadores de atajos -->
+  <div id="indicadoresAtajos">
+    <div class="indicador-atajos hidden" id="msgAtajos">
+      Presione <strong>Alt</strong> + <strong>A</strong> para usar atajos rápidos con letras.
+    </div>
+    <div class="indicador-atajos hidden" id="msgSalir">
+      Presione <strong>Esc</strong> para salir del modo de atajos.
+    </div>
+  </div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <strong id="Sistema">Sistema de Citas</strong>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+    <!-- Formulario de registro -->
+    <div class="container">
+      <h2>Registro</h2>
+      <form id="registerForm" autocomplete="off">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" required autocomplete="off">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required autocomplete="off">
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" required autocomplete="off">
+
+        <button type="submit" class="btn-registrarse-registrarse">Registrarse</button>
+      </form>
+
+      <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+    </div>
+  </div>
+  <!-- Scripts -->
+  <script src="accesibilidad.js"></script>
+  <script src="register.js"></script>
+  <script>
+    if (typeof window.inicializarAccesibilidad === 'function') {
+      window.inicializarAccesibilidad();
+    }
+  </script>
+</body>
+</html>

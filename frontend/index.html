@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendar Cita Médica</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div id="indicadoresAtajos">
+  <div class="indicador-atajos hidden" id="msgAtajos">
+    Presione <strong>Alt</strong> + <strong>A</strong> para usar atajos rápidos con letras.
+  </div>
+  <div class="indicador-atajos hidden" id="msgSalir">
+    Presione <strong>Esc</strong> para salir del modo de atajos.
+  </div>
+</div>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <strong id="Sistema">Sistema de Citas</strong>
+    </div>
+    
+    <div class="navbar-right">
+      <div class="navbar-item">
+        <button onclick="window.location.href='calendario.html'" data-key="A" tabindex="1">📅 Mis Citas</button>
+      </div>
+      <div class="navbar-item">
+        <button id="btnCerrarSesion" data-key="X" tabindex="2">Cerrar Sesión</button>
+      </div>
+
+      <div class="navbar-item navbar-accessibility">
+        <button id="btnAccesibilidad" data-key="W" tabindex="3">☰ Accesibilidad</button>
+        <div id="menuAccesibilidad" class="dropdown hidden">
+          <div class="titulo-seccion" tabindex="0" aria-hidden="false">Visual</div>
+          <button id="btnLetraGrande" onclick="activarLetraGrande()" data-key="E">Letra Grande</button>
+          <button id="btnModoOscuro" onclick="activarModoOscuro()" data-key="R">Modo Oscuro</button>
+          <button id="btnContraste" onclick="activarContraste()" data-key="T">Alto Contraste</button>
+          <button id="btnTeclado" onclick="activarEnfoqueVisible()" data-key="Y">Enfasis tabulador</button>
+
+          <hr class="separador-accesibilidad">
+          <div class="titulo-seccion" tabindex="0" aria-hidden="false">Cognitiva</div>
+          <button id="btnFuenteClara" onclick="activarFuenteLegible()" data-key="U">Fuente Legible</button>
+          <button id="btnLectura" onclick="toggleLectura()" data-key="L">Lectura automática</button>
+          <button id="btnConsejos" onclick="toggleConsejos()" data-key="C">Ayuda contextual</button>
+
+          <hr class="separador-accesibilidad">
+          <div class="titulo-seccion">Visual avanzada</div>
+          
+          <button id="btnAnimaciones" onclick="toggleAnimaciones()" data-key="F">Pausar animaciones</button>
+          <button id="btnEspaciado" onclick="alternarEspaciado()" data-key="G">Espaciado amplio</button>
+          <button id="btnResaltado" onclick="activarResaltado()" data-key="H">Resaltar enlaces</button>
+          <button id="btnMonocromatico" onclick="activarMonocromatico()" data-key="J">Modo monocromático</button>
+
+          <hr class="separador-accesibilidad">
+          <button id="btnRestablecerAccesibilidad" onclick="restablecerAccesibilidad()" data-key="Z">Restablecer accesibilidad</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<div id="mensajeCita" class="mensaje-toast hidden"></div>
+
+  <div class="container">
+    <h1>Agendar Cita Médica</h1>
+
+    <form id="formCita" class="form-card">
+      <label for="especialidad">Especialidad:
+        <span class="icono-ayuda" data-ayuda="Seleccione el área médica que necesita.">ⓘ</span>
+      </label>
+      <select id="especialidad" required>
+        <option value="" data-key="A" tabindex="3">-- Seleccione una especialidad --</option>
+        <option value="1">Medicina General</option>
+        <option value="2">Psicología</option>
+        <option value="3">Nutrición</option>
+      </select>
+
+      <label for="medico">Médico:
+        <span class="icono-ayuda" data-ayuda="Escoja el profesional que atenderá su cita.">ⓘ</span>
+      </label>
+      <select id="medico" required>
+        <option value="">-- Seleccione un médico --</option>
+      </select>
+
+      <label for="dia">Día disponible:
+        <span class="icono-ayuda" data-ayuda="Elija un día en el que haya disponibilidad médica.(Puede ser ingresado por teclado por día-mes-año)">ⓘ</span>
+      </label>
+      <input type="date" id="dia" required>
+
+      <label for="hora">Hora:
+        <span class="icono-ayuda" data-ayuda="Seleccione la hora más conveniente para su cita.">ⓘ</span>
+      </label>
+      <select id="hora" required>
+        <option value="">-- Seleccione una hora --</option>
+      </select>
+
+      <label for="motivo">Motivo:
+        <span class="icono-ayuda" data-ayuda="Explique brevemente el motivo de su consulta.">ⓘ</span>
+      </label>
+      <textarea id="motivo" required placeholder="Ejem: Dolor de cabeza"></textarea>
+
+      <button type="submit" id="Agendar">Agendar Cita</button>
+    </form>
+
+    <div id="respuesta" class="mensaje"></div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="accesibilidad.js"></script>
+  <script>
+    if (typeof window.inicializarAccesibilidad === 'function') {
+      window.inicializarAccesibilidad();
+    }
+  </script>
+</body>
+</html>

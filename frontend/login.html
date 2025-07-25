@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Indicadores de atajos -->
+  <div id="indicadoresAtajos">
+    <div class="indicador-atajos hidden" id="msgAtajos">
+      Presione <strong>Alt</strong> + <strong>A</strong> para usar atajos rápidos con letras.
+    </div>
+    <div class="indicador-atajos hidden" id="msgSalir">
+      Presione <strong>Esc</strong> para salir del modo de atajos.
+    </div>
+  </div>
+
+  <!-- Barra de navegación -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <strong id="Sistema">Sistema de Citas</strong>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+  <!-- Formulario de login -->
+  <div class="container">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+      <label for="cedula">Cédula:
+        <span class="icono-ayuda" data-ayuda="Ingrese su número de cédula para acceder.">ⓘ</span>
+      </label>
+      <input type="text" id="cedula" required autocomplete="on">
+
+      <label for="password">Contraseña:
+        <span class="icono-ayuda" data-ayuda="Ingrese su contraseña para continuar.">ⓘ</span>
+      </label>
+      <input type="password" id="password" required autocomplete="on">
+      <button type="submit" class="btn-Entrar-Login">Iniciar Sesión</button>
+    </form>
+    <p>¿No tienes cuenta? <a href="register.html">Regístrate</a></p>
+  </div>
+  
+  </div>
+    <!-- Scripts -->
+    <script src="accesibilidad.js"></script>
+    <script src="login.js"></script>
+    <script>
+      if (typeof window.inicializarAccesibilidad === 'function') {
+        window.inicializarAccesibilidad();
+      }
+    </script>
+
+</body>
+</html>

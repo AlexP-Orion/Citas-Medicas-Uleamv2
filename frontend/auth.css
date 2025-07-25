@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+}
+
+.auth-wrapper {
+  min-height: calc(100vh - 72px);
+  padding-top: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+
+.container {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 45%;
+  max-width: 420px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-top: 5px solid #2c3e50;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #2c3e50;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  font-size: 15px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn-Entrar-Login,
+.btn-registrarse-registrarse{
+  color: white;
+}
+
+button:hover {
+  background-color: #1e2e45;
+}
+
+p {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: #444;
+}
+
+a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#mensaje {
+  text-align: center;
+  font-weight: bold;
+  color: red;
+  margin-top: 10px;
+}
