@@ -4,7 +4,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const cedula = document.getElementById('cedula').value;
   const password = document.getElementById('password').value;
 
-  const res = await fetch('http://localhost:3000/api/usuarios/login', {
+  const res = await fetch('https://citas-backend-5e65.onrender.com/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ cedula, password })
