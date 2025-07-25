@@ -1,22 +1,27 @@
-document.getElementById('registerForm').addEventListener('submit', async (e) => {
+document.getElementById('formRegister').addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  const cedula = document.getElementById('cedula').value;
-  const nombre = document.getElementById('nombre').value;
-  const password = document.getElementById('password').value;
+  const nombre = document.getElementById('nombreRegister').value;
+  const cedula = document.getElementById('cedulaRegister').value;
+  const password = document.getElementById('passwordRegister').value;
 
-  const res = await fetch('http://localhost:3000/api/usuarios/register', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ cedula, nombre, password })
-  });
+  try {
+    const response = await fetch('https://citas-backend-5e65.onrender.com/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, cedula, password })
+    });
 
-  const data = await res.json();
+    const data = await response.json();
 
-  if (data.success) {
-    alert('Registro exitoso. Ahora inicia sesión.');
-    window.location.href = 'login.html';
-  } else {
-    alert(data.message);
+    if (data.success) {
+      alert('Usuario registrado correctamente');
+      window.location.href = 'login.html';
+    } else {
+      alert('Error al registrar usuario');
+    }
+  } catch (error) {
+    console.error('Error en el registro:', error);
+    alert('Error en el servidor');
   }
 });
